@@ -1,6 +1,6 @@
 
-file_applications = "https://raw.githubusercontent.com/josecypriano/Udacity_Interview/master/applications.csv"
-file_questions = "https://raw.githubusercontent.com/josecypriano/Udacity_Interview/master/questions.csv"
+#file_applications = "https://raw.githubusercontent.com/josecypriano/Udacity_Interview/master/applications.csv"
+#file_questions = "https://raw.githubusercontent.com/josecypriano/Udacity_Interview/master/questions.csv"
 
 df_applications = read.table(file_applications,header = TRUE,sep=",")
 df_questions = read.table(file_questions,header = TRUE,sep=",")
