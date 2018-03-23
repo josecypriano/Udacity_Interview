@@ -15,7 +15,6 @@ df_questions = left_join(
                         )
 df_questions
 
-
 # Question 1: How Many Applicant submitted their application? How Many Didnt?
 
 table(df_applications$submitted_it)
