@@ -7,7 +7,10 @@ df_questions = read.table(file_questions,header = TRUE,sep=",")
 
 df_applications$submitted_it = ifelse(df_applications$submitted_at=="","0","1")
 
-df_questions$responde_it = ifelse(df_questions$response=="","0","1")
+
+df_questions$question2 = ifelse(df_questions$response!="",df_questions$question,"No Response")
+
+df_questions
 
 # Question 1: How Many Applicant submitted their application? How Many Didnt?
 
