@@ -1,13 +1,17 @@
+
 install.packages("dplyr")
 install.packages("gplots")
+
+library(gdata)
 library(dplyr)
-library(gplots)
 
 #Upload Data Frames
 
+read.xls
+
 df_applications <- read.table("https://raw.githubusercontent.com/josecypriano/Udacity_Interview/master/applications.csv",header = TRUE,sep=",",stringsAsFactors=FALSE)
 df_questions <- read.table("https://raw.githubusercontent.com/josecypriano/Udacity_Interview/master/questions.csv",header = TRUE,sep=",",stringsAsFactors=FALSE)
-df_intervals <- read.table("https://raw.githubusercontent.com/josecypriano/Udacity_Interview/master/intervals.csv",header = TRUE,sep=";",stringsAsFactors=FALSE)
+
 df_questions_category <- data.frame("Id_Question"=c(1,2,3), "Question2"=c("Education","Purpose","No Response"))
 df_week <- data.frame("WeekNuM"=sort(rep(c(1:26),7),decreasing=FALSE),"From"=c(1:182))
 df_week$Category <- paste("Week","WeekNuM"=sort(rep(c(1:26),7),decreasing=FALSE))
