@@ -84,11 +84,11 @@ df_applications2<-subset(df_applications,submitted_at!="")
 df_applications2<-df_applications2[,-c(1,3,4,5,6)]
 df_applications2<-as.data.frame.matrix(prop.table(table(df_applications2)))
 
-my_palette <- colorRampPalette(c("red", "yellow", "green"))(n = 299)
+my_colours <- colorRampPalette(c("red", "yellow", "green"))(n = 299)
 
 Q3Plot = heatmap(as.matrix(df_applications2),
                  scale="column",
-                 col=my_palette,
+                 col=my_colours,
                  main="HeatMap Applications per Week",
                  Rowv = NA,
                  Colv = NA)
