@@ -1,3 +1,8 @@
+
+#Created by: Jose Cypriano de Oliveira Junior
+#Date: 27-mar-18
+#Contact: jose_cypriano@icloud.com
+
 install.packages("dplyr")
 install.packages("gplots")
 
@@ -115,5 +120,3 @@ Q3Plot = heatmap(as.matrix(df_heatmap2),
                  main="HeatMap Applications per Week",
                  Rowv = NA,
                  Colv = NA)
-
-write.csv(df_applications,"dfitems.csv",row.names = FALSE)
