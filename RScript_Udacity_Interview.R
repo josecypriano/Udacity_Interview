@@ -7,6 +7,7 @@ library(gplots)
 
 df_applications <- read.table("https://raw.githubusercontent.com/josecypriano/Udacity_Interview/master/applications.csv",header = TRUE,sep=",",stringsAsFactors=FALSE)
 df_questions <- read.table("https://raw.githubusercontent.com/josecypriano/Udacity_Interview/master/questions.csv",header = TRUE,sep=",",stringsAsFactors=FALSE)
+df_intervals <- read.table("https://raw.githubusercontent.com/josecypriano/Udacity_Interview/master/intervals.csv",header = TRUE,sep=",",stringsAsFactors=FALSE)
 df_questions_category <- data.frame("Id_Question"=c(1,2,3), "Question2"=c("Education","Purpose","No Response"))
 df_week <- data.frame("WeekNuM"=sort(rep(c(1:26),7),decreasing=FALSE),"From"=c(1:182))
 df_week$Category <- paste("Week","WeekNuM"=sort(rep(c(1:26),7),decreasing=FALSE))
@@ -44,6 +45,19 @@ df_applications$response[is.na(df_applications$response)] <- "No Response"
 df_applications <- left_join(df_applications,df_questions_analysis %>% 
                               select(Group.1,TypeofApplication),
                             by = c("applicant_id" = "Group.1"))
+
+
+
+
+
+
+head(df_applications)
+
+
+df_applications <- left_join(df_applications,df_intervals %>% 
+                               select(From.Interval,Interval.Interval),
+                             by = c("submitted_at" = "From"))
+
 df_applications$TypeofApplication[is.na(df_applications$TypeofApplication)] <- "No Response"
 
 df_applications$DateDiff <- as.integer(difftime(as.Date(df_applications$submitted_at),
