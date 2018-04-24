@@ -1,0 +1,99 @@
+--Created by: Jose Cypriano de Oliveira Junior
+
+--Date: 24-apr-18
+
+--Contact: jose_cypriano@icloud.com
+
+
+
+
+--Question 1
+
+
+select user_id ,count(*) as totalofapplications
+
+from data_interview.training_details
+
+group by user_id
+
+order by user_id ASC
+
+
+
+--Question 2
+
+
+select user_id ,count(*) as totalofsubmissions
+
+from data_interview.training_details where app_submitted_at is not null
+
+group by user_id
+
+order by user_id ASC
+
+
+
+--Question 3
+
+
+select date, count(app_created_at) as TotalApp
+
+from data_interview.calendars AS C
+
+left outer join data_interview.training_details as T on C.date = T.app_created_at
+
+group by date
+
+order by date
+
+
+
+--Question 4
+
+
+select ((select count(user_id) from data_interview.training_details as TotalApp)::float /
+
+(select count(*) from (select distinct user_id from data_interview.training_details) as TotalID))::float as avgcourses
+
+
+
+--Question 5
+
+
+select t.user_id,
+
+count(distinct t.course_id) as qtde_cursos,
+
+Round(avg(t.app_submitted_at - t.app_created_at),2) as avg_days_to_submitt ,
+
+a.first_name || ' ' || a.last_name as full_name
+
+from data_interview.training_details as t
+
+right outer join data_interview.accounts as A on t.user_id = a.user_id
+
+where app_submitted_at is not null
+
+group by t.user_id, a.first_name || ' ' || a.last_name
+
+
+
+
+--Question 6
+
+
+select c.country_code,
+
+count(t.app_created_at) as totalofapp,
+
+count(t.app_submitted_at) as totalofsub,
+
+count(t.app_submitted_at)::float / count(t.app_created_at)::float as "%ofapp"
+
+from data_interview.training_details as t
+
+right outer join data_interview.country as c on t.user_id = c.user_id
+
+group by c.country_code
+
+order by "%ofapp" desc limit 2
