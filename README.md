@@ -1,2 +1,2 @@
 # Udacity_Interview
-Datas from interview at Udacity
+Data for Udacity
